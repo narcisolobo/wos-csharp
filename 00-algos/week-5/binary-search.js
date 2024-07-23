@@ -38,9 +38,43 @@ const expected4 = 4;
  * @returns {boolean} Whether the given num exists in the given array.
  */
 function binarySearch(sortedNumbers, searchNum) {
-  // is it in the middle?
-  // if so, return true
-  // if value is greater, search right half
-  // if values is less, search left half
-  // repeat
+  let start = 0;
+  let end = sortedNumbers.length - 1;
+
+  while (start <= end) {
+    let midIdx = Math.floor(start + (end - start) / 2);
+
+    if (sortedNumbers[midIdx] === searchNum) {
+      // return true;
+      return countAdjacentDupes(sortedNumbers, midIdx);
+    }
+
+    if (searchNum < sortedNumbers[midIdx]) {
+      end = midIdx - 1;
+    } else {
+      start = midIdx + 1;
+    }
+  }
+  // return false;
+  return 0;
 }
+
+function countAdjacentDupes(array, idx) {
+  let count = 1;
+
+  let leftIdx = idx - 1;
+  while (leftIdx >= 0 && array[leftIdx] === array[idx]) {
+    count++;
+    leftIdx--;
+  }
+
+  let rightIdx = idx + 1;
+  while (rightIdx < array.length && array[rightIdx] === array[idx]) {
+    count++;
+    rightIdx++;
+  }
+
+  return count;
+}
+
+console.log(binarySearch(numbers4, searchNumber4));
