@@ -31,7 +31,34 @@ const expected5 = null;
  *    dupes or null if there is none.
  */
 function firstNonRepeated(nums) {
-  // your code here
+  // edge cases
+  if (nums.length === 1) {
+    return nums[0];
+  }
+
+  if (nums.length === 0) {
+    return null;
+  }
+
+  // build frequency table
+  const freqTable = {};
+
+  for (const num of nums) {
+    if (freqTable.hasOwnProperty(num)) {
+      freqTable[num]++;
+    } else {
+      freqTable[num] = 1;
+    }
+  }
+
+  // iterate and return first num with only one occurrence
+  for (const num of nums) {
+    if (freqTable[num] == 1) {
+      return num;
+    }
+  }
+
+  return null;
 }
 
 const result1 = firstNonRepeated(nums1);
