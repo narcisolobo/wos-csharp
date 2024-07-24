@@ -5,7 +5,7 @@
 - Students will implement default values in parameters for properties that can be assigned on instantiation.
 - Students will use basic programmatic logic to implement the functionality of a bank account
 - Students will handle edge-cases, such as insufficient funds, with the appropriate control structure
-- Students will demonstrate proficiency in creating and updating properties of an object instance from within the class.
+- Students will demonstrate proficiency in updating properties of an object instance from within the class.
 - Students will thoroughly test the functionality of their class by creating instances and calling methods with different test data and scenarios.
 
 ## Exercise Description
@@ -27,8 +27,8 @@ Our `BankAccount` class will define the state and behavior of a typical bank acc
 `Balance`: If an amount is given, the balance of the account should initially be set to that amount; otherwise, the balance should start at $0. This is a parameter with a default value.
 
 **Methods of the `BankAccount` Class**
-- `Deposit(int amount)`: increases the account balance by the given amount
-- `Withdraw(int amount)`: decreases the account balance by the given amount *if there are sufficient funds*. If there is not enough money, print a message `"Insufficient funds: Charging a $5 fee"` and deduct $5
+- `Deposit(double amount)`: increases the account balance by the given amount
+- `Withdraw(double amount)`: decreases the account balance by the given amount *if there are sufficient funds*. If there is not enough money, print a message `"Insufficient funds: Charging a $5 fee"` and deduct $5
 - `YieldInterest()`: increases the account balance by the current balance * the interest rate (as long as the balance is positive)
 
 **Override the `ToString()` Method**
