@@ -10,7 +10,7 @@ Create a base `Art` class and at least three subclasses that inherit from `Art`.
 2. Create Subclasses:
    - Each group will create at least three subclasses that inherit from `Art`.
    - In each subclass, add a constructor method that calls the `base` class constructor.
-   - Each subclass should add at least one unique property. For example, an `OilPainting` subclass might have a `Medium` property, to represent the medium used by the artist.
+   - Each subclass should add at least one unique property. For example, an `Painting` subclass might have a `Medium` property, to represent the medium used by the artist, i.e. oil, watercolor, etc.
    - Use Polymorphism to `override` the `DisplayDetails` method in each subclass.
 3. Test and Demonstrate:
    - Create instances of each subclass.

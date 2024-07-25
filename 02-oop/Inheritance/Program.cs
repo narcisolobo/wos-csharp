@@ -2,7 +2,11 @@
 
 var instrument = new StringedInstrument("Fender", "Stratocaster", "Guitar", 6);
 
-var lesPaul = new Guitar("Les Paul", "Standard");
+var lesPaul = new Guitar("Les Paul", "Standard", "Dual Humbucker");
+
+Console.WriteLine(lesPaul.PickupType);
+
+Console.WriteLine(lesPaul.PlayWhammyBar());
 
 Console.WriteLine(instrument.Play());
 
