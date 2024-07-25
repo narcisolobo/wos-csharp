@@ -36,5 +36,27 @@ const expected4 = 6;
  *    consecutive set of integers from the given array or null if none is missing.
  */
 function missingValue(unorderedNums) {
-  // your code here
+  if (unorderedNums.length <= 1) {
+    return null;
+  }
+
+  let min = unorderedNums[0];
+  let max = unorderedNums[0];
+  let sum = 0;
+  let expectedSum = 0;
+
+  for (const num of unorderedNums) {
+    if (num < min) {
+      min = num;
+    }
+    if (num > max) {
+      max = num;
+    }
+    sum += num;
+  }
+
+  for (let i = min; i <= max; i++) {
+    expectedSum += i;
+  }
+  return sum === expectedSum ? null : expectedSum - sum;
 }
