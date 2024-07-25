@@ -1,6 +1,6 @@
 # Group Activity: Art Class Hierarchy
 **Objective**:  
-Create a base `Art` class and at least three subclasses that inherit from `Art`. Each subclass should represent a different type of artwork, such as `OilPainting`, `Sculpture`, and `DigitalArt`. Implement methods to display details about the artwork.
+Create a base `Art` class and at least three subclasses that inherit from `Art`. Each subclass should represent a different type of artwork, such as `Painting`, `Sculpture`, and `DigitalArt`. Implement methods to display details about the artwork.
 
 ## Instructions
 1. Define the `Art` Class:
