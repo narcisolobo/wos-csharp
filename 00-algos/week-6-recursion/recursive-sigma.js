@@ -24,7 +24,23 @@ const expected3 = 0;
  * @returns {number}
  */
 function recursiveSigma(num) {
+  // turn num into int if decimal
+  num = parseInt(num);
+
   // base case
-  // progression to base case
-  // recursive call
+  if (num < 1) {
+    return 0;
+  }
+
+  // progression to base case and recursive call
+  return num + recursiveSigma(num - 1);
 }
+
+const result1 = recursiveSigma(num1);
+console.log(`${result1} should equal ${expected1}`);
+
+const result2 = recursiveSigma(num2);
+console.log(`${result2} should equal ${expected2}`);
+
+const result3 = recursiveSigma(num3);
+console.log(`${result3} should equal ${expected3}`);
