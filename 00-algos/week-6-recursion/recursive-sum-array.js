@@ -20,5 +20,7 @@ const expected3 = 0;
  * @returns {number} The sum of the given nums.
  */
 function sumArr(nums) {
-  // your code here
+  // base case
+  // progression to base case
+  // recursive call
 }

@@ -7,11 +7,11 @@ Output: sum of integers from 1 to Input integer
 
 const num1 = 5;
 const expected1 = 15;
-// Explanation: (1+2+3+4+5)
+// Explanation: (1 + 2 + 3 + 4 + 5)
 
 const num2 = 2.5;
 const expected2 = 3;
-// Explanation: (1+2)
+// Explanation: (1 + 2)
 
 const num3 = -1;
 const expected3 = 0;
@@ -24,5 +24,7 @@ const expected3 = 0;
  * @returns {number}
  */
 function recursiveSigma(num) {
-  // your code here
+  // base case
+  // progression to base case
+  // recursive call
 }
