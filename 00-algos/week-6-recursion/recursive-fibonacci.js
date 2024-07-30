@@ -41,7 +41,14 @@ function iFibonacci(num) {
  * @returns {number} The fibonacci number at the given position.
  */
 function rFibonacci(num) {
-  // your code here
+  if (num < 0) {
+    return null;
+  }
+
+  if (num < 2) {
+    return num;
+  }
+  return rFibonacci(num - 1) + rFibonacci(num - 2);
 }
 
 const result1 = rFibonacci(num1);

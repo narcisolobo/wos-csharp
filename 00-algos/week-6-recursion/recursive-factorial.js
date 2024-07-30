@@ -33,7 +33,17 @@ const expected3 = 1;
  * @returns {number} The result of !n.
  */
 function rFactorial(n) {
-  // your code here
+  if (isNaN(parseInt(n))) {
+    return null;
+  }
+
+  n = parseInt(n);
+
+  // Base case
+  if (n <= 0) {
+    return 1;
+  }
+  return n * rFactorial(n - 1);
 }
 
 const result1 = rFactorial(num1);
