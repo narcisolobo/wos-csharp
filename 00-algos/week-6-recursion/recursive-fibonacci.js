@@ -25,6 +25,14 @@ const expected5 = 3;
 const num6 = 8;
 const expected6 = 21;
 
+function iFibonacci(num) {
+  const fibArr = [0, 1];
+  for (let i = 2; i <= num; i++) {
+    fibArr.push(fibArr[i - 2] + fibArr[i - 1]);
+  }
+  return fibArr[num];
+}
+
 /**
  * Recursively finds the nth number in the fibonacci sequence.
  * - Time: O(?).
