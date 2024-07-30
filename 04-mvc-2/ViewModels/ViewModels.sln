@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModels", "ViewModels.csproj", "{4EFD0B47-29EF-46D6-B08E-0160405F32A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EFD0B47-29EF-46D6-B08E-0160405F32A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EFD0B47-29EF-46D6-B08E-0160405F32A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EFD0B47-29EF-46D6-B08E-0160405F32A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EFD0B47-29EF-46D6-B08E-0160405F32A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4C03AA6A-6017-4346-ABBA-44FBA5B9BAAE}
+	EndGlobalSection
+EndGlobal

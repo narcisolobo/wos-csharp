@@ -1,0 +1,16 @@
+@model List<string>;
+
+@{
+    ViewData["Title"] = "Projects";
+    var projects = Model;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Projects</h1>
+    <ul>
+        @foreach (var project in projects)
+        {
+            <li>@project</li>
+        }
+    </ul>
+</div>

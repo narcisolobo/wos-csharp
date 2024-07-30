@@ -1,0 +1,11 @@
+﻿@model Message;
+
+@{
+    ViewData["Title"] = "Home Page";
+    var message = Model;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>@message.Content</p>
+</div>

@@ -1,0 +1,11 @@
+@model string;
+
+@{
+    ViewData["Title"] = "About";
+    var subtitle = Model;
+}
+
+<div class="text-center">
+    <h1 class="display-4">About</h1>
+    <h2>@subtitle.ToUpper()</h2>
+</div>
