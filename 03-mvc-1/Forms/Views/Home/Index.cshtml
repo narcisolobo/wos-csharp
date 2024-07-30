@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/pico.yellow.min.css">
+    <title>Forms</title>
+</head>
+
+<body>
+    <main class="container">
+        <h1>Forms</h1>
+        <article>
+            <header>Register for our site!</header>
+            @* action attributes specifies the route that processes the form *@
+            <form action="/process" method="post">
+                <fieldset>
+                    <label>
+                        Username
+                        <input type="text" name="username" placeholder="Username" autocomplete="username" required />
+                    </label>
+                    <label>
+                        Email
+                        <input type="email" name="email" placeholder="Email" autocomplete="email" required />
+                    </label>
+                </fieldset>
+                <button type="reset" class="secondary">Reset</button>
+                <button type="submit">Register</button>
+            </form>
+        </article>
+    </main>
+</body>
+
+</html>
