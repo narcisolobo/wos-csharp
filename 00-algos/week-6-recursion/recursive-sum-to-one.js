@@ -22,15 +22,40 @@ const expected3 = 7;
 
 /**
  * Sums the given number's digits until the number becomes one digit.
+ * - Time: O(log n)
+ * - Space: O(log n)
  * @param {number} num The number to sum to one digit.
  * @returns {number} One digit.
  */
 function rSumToOneDigit(num) {
-  // your code here
+  // edge case
+  if (isNaN(parseInt(num))) {
+    return null;
+  }
+
+  // base case
+  if (num < 10) {
+    return num;
+  }
+
+  const strNum = num.toString();
+  let sum = 0;
+
+  for (const strDigit of strNum) {
+    sum += parseInt(strDigit);
+  }
+
+  return rSumToOneDigit(sum);
 }
 
 const result1 = rSumToOneDigit(num1);
 console.log(`${result1} should equal ${expected1}`);
+
+const result2 = rSumToOneDigit(num2);
+console.log(`${result2} should equal ${expected2}`);
+
+const result3 = rSumToOneDigit(num3);
+console.log(`${result3} should equal ${expected3}`);
 
 /**
  * This function takes in an integer as input and
