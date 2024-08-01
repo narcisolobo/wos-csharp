@@ -1,0 +1,33 @@
+﻿@model Knight;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h1 class="display-4 mb-3">Cross the Bridge of Death</h1>
+    <div class="card shadow w-50">
+        <div class="card-body">
+            <form asp-action="Results" asp-controller="Home" method="post">
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control">
+                    <span class="form-text text-warning" asp-validation-for="Name"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="FavoriteColor" class="form-label"></label>
+                    <input asp-for="FavoriteColor" class="form-control">
+                    <span class="form-text text-warning" asp-validation-for="FavoriteColor"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="AverageSpeed" class="form-label"></label>
+                    <input asp-for="AverageSpeed" class="form-control">
+                    <span class="form-text text-warning" asp-validation-for="AverageSpeed"></span>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Cross bridge</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

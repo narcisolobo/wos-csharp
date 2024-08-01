@@ -1,0 +1,22 @@
+@model Knight;
+
+@{
+    ViewData["Title"] = "Results";
+    var knight = Model;
+}
+
+<div class="text-center">
+    <h1 class="display-4 mb-3">The knight has answered:</h1>
+    <p>
+        <strong>Name: </strong>
+        @knight.Name
+    </p>
+    <p>
+        <strong>Favorite Color: </strong>
+        @knight.FavoriteColor
+    </p>
+    <p>
+        <strong>Unladen swallow flight speed: </strong>
+        @knight.AverageSpeed
+    </p>
+</div>
