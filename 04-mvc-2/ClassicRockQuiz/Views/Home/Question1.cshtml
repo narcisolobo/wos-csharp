@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Question 1";
+}
+
+<div>
+    <h1 class="display-4 mb-3">Question #1</h1>
+    <form action="/process/question-1" method="post" class="card shadow">
+        <fieldset class="card-body">
+            <legend>
+                Which British rock band released the album, "Houses of the Holy?"
+            </legend>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="choice" id="the-rolling-stones"
+                    value="The Rolling Stones">
+                <label class="form-check-label" for="the-rolling-stones">
+                    The Rolling Stones
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="choice" id="led-zeppelin" value="Led Zeppelin">
+                <label class="form-check-label" for="led-zeppelin">
+                    Led Zeppelin
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="choice" id="the-who" value="The Who">
+                <label class="form-check-label" for="the-who">
+                    The Who
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="choice" id="pink-floyd" value="Pink Floyd">
+                <label class="form-check-label" for="pink-floyd">
+                    Pink Floyd
+                </label>
+            </div>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Submit Answer</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
