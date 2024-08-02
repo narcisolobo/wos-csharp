@@ -46,8 +46,18 @@ const expected5 = 75;
  * @param {number} b
  * @returns {number} The lowest common multiple of the given ints.
  */
-function lowestCommonMultiple(a, b) {
-  // your code here
+function lowestCommonMultiple(a, b, aMult = a, bMult = b) {
+  if (aMult === bMult) {
+    return aMult;
+  }
+
+  if (aMult < bMult) {
+    return lowestCommonMultiple(a, b, aMult + a, bMult);
+  }
+
+  if (aMult > bMult) {
+    return lowestCommonMultiple(a, b, aMult, bMult + b);
+  }
 }
 
 const result1 = lowestCommonMultiple(num1A, num1B);

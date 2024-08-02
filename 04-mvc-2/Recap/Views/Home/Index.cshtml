@@ -1,0 +1,26 @@
+﻿@model Username;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h1>Recap Movie App</h1>
+    @if (ViewBag.Message != null)
+    {
+        if (ViewBag.Message == "not-allowed")
+        {
+            <p>You must be logged in to view that page.</p>
+        }
+    }
+    <article>
+        <h2>Please provide your username to continue.</h2>
+        @* provide controller name and action name *@
+        <form asp-controller="Home" asp-action="RememberUsername" method="post">
+            <label asp-for="Content"></label>
+            <input asp-for="Content" />
+            <small><span asp-validation-for="Content"></span></small>
+            <button type="submit">Continue</button>
+        </form>
+    </article>
+</div>

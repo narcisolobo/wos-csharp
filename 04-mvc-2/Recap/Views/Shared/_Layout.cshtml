@@ -1,0 +1,31 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="~/css/pico.pumpkin.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <title>@ViewData["Title"] - Recap</title>
+</head>
+
+<body>
+    <main class="container">
+        <nav>
+            <ul>
+                <li><strong>Recap Movie App</strong></li>
+            </ul>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/movies/dashboard">Dashboard</a></li>
+                <li><a href="/movies">All Movies</a></li>
+                <li><a href="/movies/new">Add a Movie</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+        @RenderBody()
+    </main>
+</body>
+
+</html>
