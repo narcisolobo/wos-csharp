@@ -1,5 +1,6 @@
 #pragma warning disable CS8618
 using System.ComponentModel.DataAnnotations;
+using Recap.Attributes;
 
 namespace Recap.Models;
 
@@ -21,6 +22,7 @@ public class Movie
 
     // use a custom validation here if you like
     // to validate that a release date was in the past
+    [PastDate]
     [Required(ErrorMessage = "Please enter release date.")]
     public DateTime? ReleaseDate { get; set; }
 

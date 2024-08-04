@@ -111,8 +111,40 @@ public class MovieService : IMovieService
         _movies.Add(movie);
     }
 
+    public void DeleteMovie(int movieId)
+    {
+        var movie = _movies
+            .FirstOrDefault((m) => m.MovieId == movieId)
+            ?? throw new ArgumentException("movie not found.");
+        _movies.Remove(movie);
+        return;
+    }
+
+    public Movie GetMovieById(int movieId)
+    {
+        var movie = _movies
+            .FirstOrDefault((m) => m.MovieId == movieId)
+            ?? throw new ArgumentException("movie not found.");
+        return movie;
+    }
+
     public List<Movie> GetMovies()
     {
         return _movies;
+    }
+
+    public void UpdateMovie(Movie upDatedMovie)
+    {
+        var movie = _movies
+            .FirstOrDefault((m) => m.MovieId == upDatedMovie.MovieId)
+            ?? throw new ArgumentException("movie not found.");
+
+        movie.Title = upDatedMovie.Title;
+        movie.Director = upDatedMovie.Director;
+        movie.Genre = upDatedMovie.Genre;
+        movie.ReleaseDate = upDatedMovie.ReleaseDate;
+        movie.Rating = upDatedMovie.Rating;
+        movie.DurationInMinutes = upDatedMovie.DurationInMinutes;
+        return;
     }
 }
