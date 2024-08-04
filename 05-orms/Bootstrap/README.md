@@ -4,7 +4,17 @@ Here are the steps I go through to update Bootstrap to the latest version and en
 1. Download the latest CSS and JavaScript files at [my Google Drive link](https://drive.google.com/drive/folders/1AhqMXPmt10z9EajUjOZKeMtHvMnbEY0W?usp=sharing).
 2. Unzip the file and replace the entire existing `bootstrap` directory.
    1. Optional - delete the `_Layout.cshtml.css` file at (`Views/Shared/_Layout.cshtml.css`)
-3. Edit your `_Layout.cshtml` file at (`Views/Shared/_Layout.cshtml`).
+3. Add the `.footer` class to your `site.css` file.
+```css
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+```
+4. Edit your `_Layout.cshtml` file at (`Views/Shared/_Layout.cshtml`).
 
 **Example:**
 ```html

@@ -46,7 +46,7 @@ public class Movie
 ```
 
 ## 4. Create your database context
-I like to create a new namespace and directory for the context, but it's also fine to have this file in your `Models` directory.
+I like to create a new namespace and directory for the context, but it's also fine to have this file in your `Models` directory. This example shows the more modularized approach.
 
 **Example:**
 ```cs
@@ -64,7 +64,7 @@ public class MovieContext : DbContext
 ```
 
 ## 5. Add your database connection string
-Go to your `appsettings.json` file and add your database connection string. Be sure to change your password if it's different.
+Go to your `appsettings.json` file and add your database connection string. Be sure to change your password if it's different and don't forget to change the database name.
 ```json
 {
   "Logging": {
@@ -131,4 +131,32 @@ Update your database:
 dotnet ef database update
 ```
 
-## 8. If your `.sln` filename contains `.generated`, rename it to match the `.csproj` filename.
+## 8. Edit your `.sln` file
+If your `.sln` filename contains `.generated`, rename it to match the `.csproj` filename.
+
+![sln file](./assets/sln.png)
+
+## 9. Inject your database context into your controllers
+
+Every controller that needs access to the database should have the `DbContext` injected into its controller.
+
+**Example:**
+```cs
+using Microsoft.AspNetCore.Mvc;
+using MovieCRUD.Context;
+using MovieCRUD.Models;
+
+namespace MovieCRUD.Controllers;
+
+public class MovieController : Controller
+{
+    private readonly MovieContext _context;
+
+    public MovieController(MovieContext context)
+    {
+        _context = context;
+    }
+
+    // action methods go here
+}
+```
