@@ -102,6 +102,22 @@ public class HomeController : Controller
         return RedirectToAction("ShowMovie", new { movieId });
     }
 
+    [HttpPost("movies/{movieId:int}/delete")]
+    public IActionResult DeleteMovie(int movieId)
+    {
+        var existingMovie = _context.Movies
+            .FirstOrDefault((movie) => movie.MovieId == movieId);
+
+        if (existingMovie is null)
+        {
+            return RedirectToAction("MovieNotFound");
+        }
+
+        _context.Movies.Remove(existingMovie);
+        _context.SaveChanges();
+        return RedirectToAction("Index");
+    }
+
     [HttpGet("/movies/not-found")]
     public ViewResult MovieNotFound()
     {

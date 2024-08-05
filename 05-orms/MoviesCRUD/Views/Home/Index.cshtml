@@ -23,8 +23,14 @@
                     <td><a href="/movies/@movie.MovieId">@movie.Title</a></td>
                     <td>@movie.DurationInMInutes</td>
                     <td>@movie.Rating</td>
-                    <td>
-                        <a href="/movies/@movie.MovieId/edit">Edit Movie</a>
+                    <td class="d-flex align-items-center gap-2">
+                        <a class="btn btn-sm btn-warning" href="/movies/@movie.MovieId/edit">Edit Movie</a>
+                        <form asp-action="DeleteMovie" asp-controller="Home" asp-route-movieId="@movie.MovieId"
+                            method="post">
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </div>
+                        </form>
                     </td>
                 </tr>
             }
