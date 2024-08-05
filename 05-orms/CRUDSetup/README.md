@@ -4,11 +4,11 @@ Now that we have a database, our application setup has reached its final form.
 Below are the steps I go through when creating a new CRUD application. Feel free to adjust this however you like.
 
 ## 1. Create new MVC project
-Create a new mvc project with the following command (replace `AppName` with the name of your app):
+Create a new mvc project with the following command (replace `<AppName>` with the name of your app):
 ```bash
 dotnet new mvc --no-https -o <AppName>
 ```
-## 2. Install the Entity Framework Core tools and the EF Core provider for MySQL.
+## 2. Install the Entity Framework Core design-time tools and the EF Core provider for MySQL.
 ```bash
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Pomelo.EntityFrameworkCore.MySql

@@ -1,0 +1,33 @@
+@model Movie;
+
+@{
+    ViewData["Title"] = "Add a new Movie";
+}
+
+<section>
+    <h1 class="display-4 mb-3">Add a New Movie</h1>
+    <div class="card shadow">
+        <div class="card-body">
+            <form asp-action="CreateMovie" asp-controller="Home" method="post">
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Title"></label>
+                    <input class="form-control" asp-for="Title">
+                    <span class="form-text text-warning" asp-validation-for="Title"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="DurationInMInutes"></label>
+                    <input class="form-control" asp-for="DurationInMInutes">
+                    <span class="form-text text-warning" asp-validation-for="DurationInMInutes"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Rating"></label>
+                    <input class="form-control" asp-for="Rating" type="number" step=".1">
+                    <span class="form-text text-warning" asp-validation-for="Rating"></span>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

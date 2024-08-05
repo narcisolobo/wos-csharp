@@ -1,0 +1,24 @@
+@model Movie;
+
+@{
+    var movie = Model;
+    ViewData["Title"] = "Movie Details";
+}
+
+<section>
+    <h1 class="display-4 mb-3">Movie Details</h1>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <h2 class="card-title mb-3">@movie.Title</h2>
+            <p>
+                <strong>Duration in minutes:</strong>
+                @movie.DurationInMInutes
+            </p>
+            <p>
+                <strong>Rating:</strong>
+                @movie.Rating
+            </p>
+        </div>
+    </div>
+</section>
