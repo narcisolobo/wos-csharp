@@ -14,4 +14,7 @@ for color in colors:
 
 guitar = {"brand": "Fender", "model": "Stratocaster", "year": 1972, "is_new": False}
 
+for key in guitar:
+    print(guitar[key])
+
 print(guitar)
