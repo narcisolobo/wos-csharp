@@ -1,0 +1,21 @@
+@model LoginUser;
+
+@{
+    var loginUser = Model;
+}
+
+<form asp-action="Login" asp-controller="Home" method="post">
+    <div class="mb-3">
+        <label class="form-label" asp-for="@loginUser.Email"></label>
+        <input class="form-control" asp-for="@loginUser.Email">
+        <span class="form-text text-warning" asp-validation-for="@loginUser.Email"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="@loginUser.Password"></label>
+        <input class="form-control" asp-for="@loginUser.Password">
+        <span class="form-text text-warning" asp-validation-for="@loginUser.Password"></span>
+    </div>
+    <div class="text-end">
+        <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+</form>

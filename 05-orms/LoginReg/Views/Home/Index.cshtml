@@ -1,0 +1,49 @@
+﻿@model HomePageViewModel;
+
+@{
+    var user = Model.User;
+    var loginUser = Model.LoginUser;
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h1 class="display-4 mb-3">Login or Register for our site below.</h1>
+
+    @* check if message is null *@
+
+    @if (ViewBag.Message is not null)
+    {
+        if (ViewBag.Message == "not-authenticated")
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                You must be logged in to view that page.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        else if (ViewBag.Message == "invalid-credentials")
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Invalid credentials.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+    }
+
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="card shadow mb-3">
+                <div class="card-body">
+                    @await Html.PartialAsync("../Partials/_RegisterForm", user)
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    @await Html.PartialAsync("../Partials/_LoginForm", loginUser)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
