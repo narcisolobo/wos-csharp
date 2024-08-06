@@ -1,0 +1,27 @@
+@model List<MovieBuff>;
+
+@{
+    var movieBuffs = Model;
+}
+
+<div class="card shadow">
+    <div class="card-body">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Movie Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var movieBuff in movieBuffs)
+                {
+                    <tr>
+                        <td class="align-middle">@movieBuff.FullName</td>
+                        <td>@movieBuff.Movies.Count</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

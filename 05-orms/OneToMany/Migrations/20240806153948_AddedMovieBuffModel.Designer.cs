@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OneToMany.Context;
 
@@ -11,9 +12,11 @@ using OneToMany.Context;
 namespace OneToMany.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240806153948_AddedMovieBuffModel")]
+    partial class AddedMovieBuffModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,9 +50,6 @@ namespace OneToMany.Migrations
                         .HasMaxLength(45)
                         .HasColumnType("varchar(45)");
 
-                    b.Property<int>("MovieBuffId")
-                        .HasColumnType("int");
-
                     b.Property<double?>("Rating")
                         .IsRequired()
                         .HasColumnType("double");
@@ -71,8 +71,6 @@ namespace OneToMany.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("MovieId");
-
-                    b.HasIndex("MovieBuffId");
 
                     b.ToTable("Movies");
                 });
@@ -104,22 +102,6 @@ namespace OneToMany.Migrations
                     b.HasKey("MovieBuffId");
 
                     b.ToTable("MovieBuffs");
-                });
-
-            modelBuilder.Entity("OneToMany.Models.Movie", b =>
-                {
-                    b.HasOne("OneToMany.Models.MovieBuff", "MovieBuff")
-                        .WithMany("Movies")
-                        .HasForeignKey("MovieBuffId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MovieBuff");
-                });
-
-            modelBuilder.Entity("OneToMany.Models.MovieBuff", b =>
-                {
-                    b.Navigation("Movies");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,8 +1,22 @@
 @model Movie;
 
+@{
+    var movieBuffs = ViewBag.MovieBuffs;
+}
+
 <div class="card shadow">
     <div class="card-body">
         <form asp-action="CreateMovie" asp-controller="Movie" method="post">
+            <div class="form-floating mb-3">
+                <select asp-for="MovieBuffId" class="form-select">
+                    <option value="" selected hidden disabled>Select Movie Buff</option>
+                    @foreach (var buff in movieBuffs)
+                    {
+                        <option value="@buff.MovieBuffId">@buff.FullName</option>
+                    }
+                </select>
+                <label asp-for="MovieBuffId">Select Movie Buff</label>
+            </div>
             <div class="form-floating mb-3">
                 <input class="form-control" asp-for="Title" placeholder="Title">
                 <label asp-for="Title"></label>

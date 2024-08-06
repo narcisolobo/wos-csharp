@@ -40,9 +40,13 @@ public class Movie
 
     [Required(ErrorMessage = "Please enter rating.")]
     [Range(0, 11, ErrorMessage = "Rating must be between 0 and 10.")]
-    public double? Rating { get; set; } = 0;
+    public double? Rating { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+    public int MovieBuffId { get; set; }
+
+    public MovieBuff? MovieBuff { get; set; }
 }

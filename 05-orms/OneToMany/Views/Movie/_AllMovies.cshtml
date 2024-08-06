@@ -18,11 +18,15 @@
                 @foreach (var movie in movies)
                 {
                     <tr>
-                        <td><a href="/movies/@movie.MovieId">@movie.Title</a></td>
-                        <td></td>
+                        <td class="align-middle">@movie.Title</td>
+                        <td class="align-middle">
+                            @if (@movie.MovieBuff is not null)
+                            {
+                                @movie.MovieBuff.FullName
+                            }
+                        </td>
                         <td>
-                            <a href="/movies/@movie.MovieId/edit" class="btn btn-sm btn-warning">Edit</a>
-                            <a href="/movies/@movie.MovieId/delete" class="btn btn-sm btn-warning">Delete</a>
+                            <a href="/movies/@movie.MovieId" class="btn btn-sm btn-primary">View</a>
                         </td>
                     </tr>
                 }
