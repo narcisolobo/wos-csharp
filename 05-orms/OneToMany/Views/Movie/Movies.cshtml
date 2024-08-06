@@ -1,0 +1,21 @@
+@model MoviesPageViewModel;
+
+@{
+    var movie = Model.Movie;
+    var movies = Model.Movies;
+    ViewData["Title"] = "Movies Page";
+}
+
+<section>
+    <h1 class="display-4 mb-3">Movies Page</h1>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h2 class="display-6 mb-3">All Movies</h2>
+            @await Html.PartialAsync("_AllMovies", movies)
+        </div>
+        <div class="col-12 col-md-6">
+            <h2 class="display-6 mb-3">Add a Movie</h2>
+            @await Html.PartialAsync("_AddAMovie", movie)
+        </div>
+    </div>
+</section>

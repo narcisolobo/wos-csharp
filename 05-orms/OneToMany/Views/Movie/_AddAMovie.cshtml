@@ -1,0 +1,60 @@
+@model Movie;
+
+<div class="card shadow">
+    <div class="card-body">
+        <form asp-action="CreateMovie" asp-controller="Movie" method="post">
+            <div class="form-floating mb-3">
+                <input class="form-control" asp-for="Title" placeholder="Title">
+                <label asp-for="Title"></label>
+                <span class="form-text text-warning" asp-validation-for="Title"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <div class="form-floating">
+                    <input class="form-control" asp-for="Director" placeholder="Director">
+                    <label asp-for="Director"></label>
+                    <span class="form-text text-warning" asp-validation-for="Director"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="form-floating">
+                        <input class="form-control" asp-for="Genre" placeholder="Genre">
+                        <label asp-for="Genre"></label>
+                        <span class="form-text text-warning" asp-validation-for="Genre"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating">
+                        <input class="form-control" asp-for="ReleaseDate" placeholder="Release date" type="date">
+                        <label asp-for="ReleaseDate"></label>
+                        <span class="form-text text-warning" asp-validation-for="ReleaseDate"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="form-floating">
+                        <input class="form-control" asp-for="DurationInMinutes" placeholder="Duration in minutes">
+                        <label asp-for="DurationInMinutes"></label>
+                        <span class="form-text text-warning" asp-validation-for="DurationInMinutes"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating">
+                        <input class="form-control" asp-for="Rating" placeholder="Rating" type="number" step=".1">
+                        <label asp-for="Rating"></label>
+                        <span class="form-text text-warning" asp-validation-for="Rating"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <textarea asp-for="Synopsis" class="form-control textarea"></textarea>
+                <label asp-for="Synopsis"></label>
+                <span class="form-text text-warning" asp-validation-for="Synopsis"></span>
+            </div>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
