@@ -20,7 +20,10 @@
             </p>
             <p>
                 <strong>Release date: </strong>
-                @movie.ReleaseDate
+                @if (movie.ReleaseDate is not null)
+                {
+                    @movie.ReleaseDate.Value.ToString("d")
+                }
             </p>
             <p>
                 <strong>Synopsis: </strong>

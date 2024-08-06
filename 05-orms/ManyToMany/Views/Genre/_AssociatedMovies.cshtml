@@ -1,0 +1,16 @@
+@model List<Association>;
+
+@{
+    var associations = Model;
+}
+
+<div class="card shadow">
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            @foreach (var association in associations)
+            {
+                <li class="list-group-item">@association.Movie.Title</li>
+            }
+        </ul>
+    </div>
+</div>

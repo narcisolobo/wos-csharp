@@ -1,0 +1,16 @@
+@model Movie;
+
+<div class="card shadow">
+    <div class="card-body">
+        <form asp-action="CreateMovie" asp-controller="Movie" method="post">
+            <div class="mb-3">
+                <label class="form-label" asp-for="Title" id="focus-input"></label>
+                <input class="form-control" asp-for="Title">
+                <span class="form-text text-warning" asp-validation-for="Title"></span>
+            </div>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Add Movie</button>
+            </div>
+        </form>
+    </div>
+</div>
