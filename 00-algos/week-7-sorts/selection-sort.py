@@ -3,10 +3,10 @@ def selection_sort(numbers):
     Sorts the given list in-place using the selection sort algorithm.
 
     Parameters:
-    numbers (list): The list of numbers to be sorted.
+        numbers (list): The list of numbers to be sorted.
 
     Returns:
-    list: The sorted list.
+        list: The sorted list.
     """
     # your code here
 
