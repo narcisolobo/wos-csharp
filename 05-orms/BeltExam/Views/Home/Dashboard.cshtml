@@ -1,0 +1,10 @@
+@model User;
+
+@{
+    var user = Model;
+    ViewData["Title"] = "Dashboard";
+}
+
+<section>
+    <h1 class="display-4 mb-3">Welcome @user.FirstName!</h1>
+</section>
