@@ -1,0 +1,39 @@
+@model MoviesPageViewModel;
+
+@{
+    var user = Model.User;
+    var movies = Model.Movies;
+    ViewData["Title"] = "Movies";
+}
+
+<section>
+    <h1 class="display-4 mb-3">Welcome @user.FirstName!</h1>
+    <a href="/movies/new" class="mb-3">Add a New Movie</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+                <th>Uploaded By</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in movies)
+            {
+                <tr>
+                    <td>@movie.Title</td>
+                    <td>@movie.Genre</td>
+                    <td>@movie.ReleaseDate.Value.ToString("yyyy")</td>
+                    <td>
+                        @movie.User.FullName
+                    </td>
+                    <td>
+                        <a href="/movies/@movie.MovieId">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

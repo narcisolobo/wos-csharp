@@ -4,7 +4,6 @@ using BeltExam.Models;
 using BeltExam.Context;
 using BeltExam.ViewModels;
 using Microsoft.AspNetCore.Identity;
-using BeltExam.Attributes;
 
 namespace BeltExam.Controllers;
 
@@ -62,8 +61,9 @@ public class HomeController : Controller
         // login the user by storing their id in session
         HttpContext.Session.SetInt32("userId", newUser.UserId);
 
-        // redirect user to dashboard
-        return RedirectToAction("Dashboard");
+        // redirect user to movies
+        // the second argument is the controller name
+        return RedirectToAction("Movies", "Movie");
     }
 
     [HttpPost("login")]
@@ -109,28 +109,9 @@ public class HomeController : Controller
         // login the user by storing their id in session
         HttpContext.Session.SetInt32("userId", user.UserId);
 
-        // redirect user to dashboard
-        return RedirectToAction("Dashboard");
-    }
-
-    [SessionCheck]
-    [HttpGet("dashboard")]
-    public IActionResult Dashboard()
-    {
-        int? userId = HttpContext.Session.GetInt32("userId");
-        if (userId is null)
-        {
-            return RedirectToAction("Index");
-        }
-
-        var user = _context.Users.FirstOrDefault((user) => user.UserId == userId);
-
-        if (user is null)
-        {
-            return RedirectToAction("Index");
-        }
-
-        return View("Dashboard", user);
+        // redirect user to movies
+        // the second argument is the controller name
+        return RedirectToAction("Movies", "Movie");
     }
 
     [HttpGet("logout")]

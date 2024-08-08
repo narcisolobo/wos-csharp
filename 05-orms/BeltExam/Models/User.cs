@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using BeltExam.Attributes;
 
+
 namespace BeltExam.Models;
 
 public class User
@@ -19,6 +20,8 @@ public class User
     [Required(ErrorMessage = "Please enter last name.")]
     [MinLength(2, ErrorMessage = "Last name must be at least two characters.")]
     public string LastName { get; set; }
+
+    public string FullName => $"{FirstName} {LastName}";
 
     [UniqueEmail]
     [Display(Name = "Email:")]
@@ -39,6 +42,10 @@ public class User
     [Compare("Password", ErrorMessage = "Passwords do not match.")]
     [MinLength(8, ErrorMessage = "Confirm password must be at least eight characters.")]
     public string ConfirmPassword { get; set; }
+
+    // Navigational Properties
+    public List<Movie> Movies { get; set; } = new List<Movie>();
+    public List<Rating> RatedMovies { get; set; } = new List<Rating>();
 
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public DateTime UpdatedAt { get; set; } = DateTime.Now;

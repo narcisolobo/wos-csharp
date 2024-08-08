@@ -32,3 +32,7 @@ body {
   white-space: nowrap;
   line-height: 60px;
 }
+
+.textarea {
+  height: 7rem !important;
+}

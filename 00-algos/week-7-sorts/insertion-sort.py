@@ -47,7 +47,16 @@ def insertion_sort(numbers):
     Returns:
     list: The sorted list.
     """
-    # your code here
+    for i in range(1, len(numbers)):
+        current_value = numbers[i]
+        j = i - 1
+        # Shift
+        while j >= 0 and numbers[j] > current_value:
+            numbers[j + 1] = numbers[j]
+            j -= 1
+        # Insert
+        numbers[j + 1] = current_value
+    return numbers
 
 
 # Test cases

@@ -1,0 +1,58 @@
+@model MovieDetailsViewModel;
+
+@{
+    var userId = Model.UserId;
+    var movie = Model.Movie;
+    var rating = Model.Rating;
+    ViewData["Title"] = "Movie Details";
+}
+
+<section>
+    <h1 class="display-4 mb-3">Movie Details</h1>
+    <a href="/movies/new" class="mb-3">Add a New Movie</a>
+    <h2 class="display-6 mb-3">@movie.Title</h2>
+    <div class="row">
+        <div class="col">
+            <p>
+                <strong>Genre: </strong>
+                @movie.Genre
+            </p>
+            <p>
+                <strong>Release Date: </strong>
+                @movie.ReleaseDate.Value.ToString("MMMM d, yyyy")
+            </p>
+            <p>
+                <strong>Synopsis:</strong>
+            </p>
+            <p>@movie.Synopsis</p>
+            @if (movie.UserId == userId)
+            {
+                <a href="/movies/@movie.MovieId/edit">Edit</a>
+                <form asp-action="DeleteMovie" asp-controller="Movie" asp-route-movieId="@movie.MovieId" method="post">
+                    <button type="submit" class="btn btn-sm btn-primary">Delete</button>
+                </form>
+            }
+        </div>
+        <div class="col">
+            <form asp-action="CreateRating" asp-controller="Movie" method="post">
+                <input type="hidden" asp-for="@rating.UserId">
+                <input type="hidden" asp-for="@movie.MovieId">
+                <div class="mb-3">
+                    <label asp-for="@rating.Score"></label>
+                    <select asp-for="@rating.Score" class="form-select">
+                        <option value="" selected hidden disabled>Select score...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <span class="form-text text-warning" asp-validation-for="@rating.Score"></span>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Rate</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
