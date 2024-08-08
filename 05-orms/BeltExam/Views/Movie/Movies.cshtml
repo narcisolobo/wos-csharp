@@ -9,6 +9,15 @@
 <section>
     <h1 class="display-4 mb-3">Welcome @user.FirstName!</h1>
     <a href="/movies/new" class="mb-3">Add a New Movie</a>
+    <form action="/movies/sort" method="post">
+        <label for="property" class="form-label">Sort table by:</label>
+        <select name="property" id="property">
+            <option value="Title">Title</option>
+            <option value="Genre">Genre</option>
+            <option value="ReleaseDate">Release Year</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Sort</button>
+    </form>
     <table class="table">
         <thead>
             <tr>
@@ -29,8 +38,18 @@
                     <td>
                         @movie.User.FullName
                     </td>
-                    <td>
-                        <a href="/movies/@movie.MovieId">View</a>
+                    <td class="d-flex gap-2">
+                        <a class="btn btn-sm btn-primary" href="/movies/@movie.MovieId">View</a>
+                        @if (movie.UserId == user.UserId)
+                        {
+                            <a class="btn btn-sm btn-warning" href="/movies/@movie.MovieId/edit">Edit</a>
+                            <form asp-action="DeleteMovie" asp-controller="Movie" asp-route-movieId="@movie.MovieId"
+                                method="post">
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </div>
+                            </form>
+                        }
                     </td>
                 </tr>
             }

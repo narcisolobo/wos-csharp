@@ -33,6 +33,7 @@ public class User
     [Display(Name = "Password:")]
     [Required(ErrorMessage = "Please enter password.")]
     [MinLength(8, ErrorMessage = "Password must be at least eight characters.")]
+    [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$", ErrorMessage = "Password must contain 1 uppercase letter, 1 lowercase letter, and 1 number.")]
     public string Password { get; set; }
 
     [NotMapped]

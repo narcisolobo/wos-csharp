@@ -1,0 +1,21 @@
+@model Rating;
+
+<form asp-action="CreateRating" asp-controller="Movie" asp-route-movieId="@Model.MovieId" method="post">
+    <input type="hidden" asp-for="UserId">
+    <input type="hidden" asp-for="MovieId">
+    <div class="mb-3">
+        <label asp-for="Score">Rate this movie:</label>
+        <select asp-for="Score" class="form-select">
+            <option value="" selected hidden disabled>Select score...</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <span class="form-text text-warning" asp-validation-for="Score"></span>
+    </div>
+    <div class="text-end">
+        <button type="submit" class="btn btn-primary">Rate</button>
+    </div>
+</form>

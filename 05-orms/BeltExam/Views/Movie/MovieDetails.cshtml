@@ -34,25 +34,9 @@
             }
         </div>
         <div class="col">
-            <form asp-action="CreateRating" asp-controller="Movie" method="post">
-                <input type="hidden" asp-for="@rating.UserId">
-                <input type="hidden" asp-for="@movie.MovieId">
-                <div class="mb-3">
-                    <label asp-for="@rating.Score"></label>
-                    <select asp-for="@rating.Score" class="form-select">
-                        <option value="" selected hidden disabled>Select score...</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <span class="form-text text-warning" asp-validation-for="@rating.Score"></span>
-                </div>
-                <div class="text-end">
-                    <button type="submit" class="btn btn-primary">Rate</button>
-                </div>
-            </form>
+            <h3>Average Rating: @movie.Average</h3>
+            <p>@movie.Ratings.Count users have rated this movie</p>
+            @await Html.PartialAsync("_AddRating", rating)
         </div>
     </div>
 </section>
