@@ -36,3 +36,18 @@ def partition(numbers, left_idx=0, right_idx=None):
     """
     if right_idx is None:
         right_idx = len(numbers) - 1
+
+    pivot_idx = 0
+    pivot_value = numbers[right_idx]
+
+    for i in range(left_idx, right_idx):
+        if numbers[i] <= pivot_value:
+            numbers[i], numbers[pivot_idx] = numbers[pivot_idx], numbers[i]
+            pivot_idx += 1
+
+    numbers[pivot_idx], numbers[right_idx] = numbers[right_idx], numbers[pivot_idx]
+    return pivot_idx
+
+
+partition(numbers2)
+print(numbers2)
