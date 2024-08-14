@@ -37,7 +37,7 @@ def partition(numbers, left_idx=0, right_idx=None):
     if right_idx is None:
         right_idx = len(numbers) - 1
 
-    pivot_idx = 0
+    pivot_idx = left_idx
     pivot_value = numbers[right_idx]
 
     for i in range(left_idx, right_idx):
