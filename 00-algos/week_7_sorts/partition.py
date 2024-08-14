@@ -47,7 +47,3 @@ def partition(numbers, left_idx=0, right_idx=None):
 
     numbers[pivot_idx], numbers[right_idx] = numbers[right_idx], numbers[pivot_idx]
     return pivot_idx
-
-
-partition(numbers2)
-print(numbers2)
