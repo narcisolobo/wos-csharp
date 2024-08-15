@@ -1,0 +1,14 @@
+{
+  "name": "dadjokes",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Narciso Lobo",
+  "license": "ISC",
+  "description": "This is an application for Dad Jokes.",
+  "devDependencies": {
+    "tailwindcss": "^3.4.10"
+  }
+}

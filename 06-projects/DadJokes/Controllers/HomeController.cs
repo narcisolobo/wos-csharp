@@ -24,6 +24,7 @@ public class HomeController : Controller
         return View("Index", joke);
     }
 
+    [HttpGet("privacy")]
     public IActionResult Privacy()
     {
         return View();
