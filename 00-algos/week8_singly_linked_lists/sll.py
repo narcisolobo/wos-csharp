@@ -95,7 +95,8 @@ class SinglyLinkedList:
 
 
 # Test case
-my_sll = SinglyLinkedList().insert_at_back_many([5, 10, 4, 3, 6, 1, 7, 2])
+my_sll = SinglyLinkedList()
+my_sll.insert_at_back_many([5, 10, 4, 3, 6, 1, 7, 2])
 
 # Convert the singly linked list to a list and print it
 print(my_sll.to_list())
