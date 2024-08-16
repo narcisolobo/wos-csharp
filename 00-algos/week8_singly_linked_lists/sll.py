@@ -122,7 +122,8 @@ class SinglyLinkedList:
 
     def remove_head(self) -> Any:
         """
-        Removes the first node of this list.
+        Removes the first node of this list and returns its data.
+        If list is empty, return None.
 
         Returns:
             `Any`: The data from the removed node.
@@ -132,10 +133,11 @@ class SinglyLinkedList:
     def calculate_average(self) -> float | None:
         """
         Calculates the average of this list. Returns None if
-        list is empty. Raise exception
+        list is empty. Raise exception if non-numerical data is
+        in the list.
 
         Returns:
-            float|None: _description_
+            float|None:
         """
         pass
 
@@ -149,17 +151,3 @@ print(my_sll.to_list())
 
 # Print the singly linked list with the __str__ method
 print(my_sll)
-
-my_sll.insert_at_front(23)
-print(my_sll)
-
-head_data = my_sll.remove_head()
-print(head_data)
-print(my_sll)
-
-easy_sll = SinglyLinkedList()
-try:
-    easy_sll.insert_at_back_many([1, "a", 3, 4])
-except TypeError:
-    print("something went wrong")
-print(easy_sll.calculate_average())
