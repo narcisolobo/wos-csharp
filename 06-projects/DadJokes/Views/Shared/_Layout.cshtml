@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="synthwave">
 
 <head>
     <meta charset="utf-8" />
@@ -9,29 +9,13 @@
 </head>
 
 <body class="min-h-dvh flex flex-col">
-    <header class="bg-cyan-900 p-4 text-white">
-        <nav class="flex justify-between">
-            <a href="/">DadJokes</a>
-            <ul class="flex gap-2">
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/privacy">Privacy</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <div class="flex flex-grow bg-cyan-200">
-        <main role="main" class="flex flex-grow justify-center items-center">
+    <partial name="./_Navbar.cshtml" />
+    <div class="flex flex-grow">
+        <main role="main" class="px-4 md:container flex flex-grow justify-center items-center">
             @RenderBody()
         </main>
     </div>
-    <footer class="p-6 bg-cyan-800 text-white">
-        <div class="container">
-            &copy; 2024 - DadJokes - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    <partial name="./_Footer.cshtml" />
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

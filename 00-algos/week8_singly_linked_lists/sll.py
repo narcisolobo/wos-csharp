@@ -1,6 +1,15 @@
 from typing import Any, Self
 
 
+class NonNumericDataError(Exception):
+    """
+    Raised when adding numeric data to non-numeric data.
+    """
+
+    def __init__(self, data: Any) -> None:
+        super().__init__(f"Non-numeric data '{data}' encountered in the list.")
+
+
 class ListNode:
     """
     A class to represent a single item of a SinglyLinkedList that can be
@@ -118,7 +127,15 @@ class SinglyLinkedList:
         Returns:
             `Self`: `SinglyLinkedList` - This list.
         """
-        pass
+        new_node = ListNode(data)
+        if self.is_empty():
+            self.head = new_node
+
+        else:
+            new_node.next = self.head
+            self.head = new_node
+
+        return self
 
     def remove_head(self) -> Any:
         """
@@ -128,18 +145,39 @@ class SinglyLinkedList:
         Returns:
             `Any`: The data from the removed node.
         """
-        pass
+        if self.is_empty():
+            return None
+
+        else:
+            data = self.head.data
+            self.head = self.head.next
+            return data
 
     def calculate_average(self) -> float | None:
         """
-        Calculates the average of this list. Returns None if
+        Calculates the average of this list. Return None if
         list is empty. Raise exception if non-numerical data is
         in the list.
 
         Returns:
             float|None:
         """
-        pass
+        if self.is_empty():
+            return None
+
+        else:
+            count = 0
+            sum = 0
+            runner = self.head
+
+            while runner:
+                try:
+                    sum += runner.data
+                    count += 1
+                    runner = runner.next
+                except:
+                    raise NonNumericDataError(runner.data)
+            return sum / count
 
 
 # Test case
@@ -151,3 +189,21 @@ print(my_sll.to_list())
 
 # Print the singly linked list with the __str__ method
 print(my_sll)
+
+print("insert_at_front")
+my_sll.insert_at_front(23)
+print(my_sll)
+
+print("remove_head")
+print(my_sll.remove_head())
+print(my_sll)
+
+# calculate average
+test_sll = SinglyLinkedList()
+test_sll.insert_at_back_many([1, 2, 3, 4])
+print(test_sll.calculate_average())
+
+# calculate average with exception
+test_sll2 = SinglyLinkedList()
+test_sll2.insert_at_back_many([1, "hello"])
+print(test_sll2.calculate_average())

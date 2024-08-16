@@ -2,13 +2,14 @@
   "name": "dadjokes",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "css:watch": "npx tailwindcss -i ./tailwind/tailwind.postcss -o ./wwwroot/css/site.css --watch"
   },
   "keywords": [],
   "author": "Narciso Lobo",
   "license": "ISC",
   "description": "This is an application for Dad Jokes.",
   "devDependencies": {
+    "daisyui": "^4.12.10",
     "tailwindcss": "^3.4.10"
   }
 }

@@ -5,4 +5,29 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1 class="text-6xl">@data.Joke</h1>
+<div class="hero">
+    <div class="hero-content text-center">
+        <div class="max-w-md">
+            <h1 class="text-5xl font-bold">Dad Joke of the Day</h1>
+            <p class="py-6">
+                @data.Joke
+            </p>
+            <button class="btn btn-primary" onclick="my_modal_1.showModal()">open modal</button>
+        </div>
+    </div>
+</div>
+
+<!-- Open the modal using ID.showModal() method -->
+
+<dialog id="my_modal_1" class="modal">
+    <div class="modal-box">
+        <h3 class="text-lg font-bold">Hello!</h3>
+        <p class="py-4">Press ESC key or click the button below to close</p>
+        <div class="modal-action">
+            <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn">Close</button>
+            </form>
+        </div>
+    </div>
+</dialog>
