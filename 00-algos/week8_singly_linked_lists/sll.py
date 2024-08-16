@@ -8,10 +8,12 @@ class ListNode:
     """
 
     # (dunder init/constructor)
-    def __init__(self, data: int):
+    def __init__(self, data: Any):
         """
         Constructs a new Node instance.
-        :param data: The data to be added into this new instance of a Node.
+
+        Args:
+            data (Any): The data to be added into this new instance of a Node.
         """
         self.data = data
         self.next = None
@@ -38,16 +40,22 @@ class SinglyLinkedList:
     def is_empty(self) -> bool:
         """
         Determines if this list is empty.
-            :returns: bool - True if the list is empty, False otherwise.
+
+        Returns:
+            `bool` - `True` if the list is empty, `False` otherwise.
         """
         return self.head is None
 
-    def insert_at_back(self, data: int) -> Self:
+    def insert_at_back(self, data: Any) -> Self:
         """
-        Creates a new node with the given data and inserts it at the back of
-        this list.
-            :param data: The data to be added to the new node.
-            :returns: SinglyLinkedList - This list.
+        Creates a new node with the given data and inserts itat the
+        back of this list.
+
+        Args:
+            `data` (`Any`): The data to be added to the new node.
+
+        Returns:
+            `Self`: `SinglyLinkedList` - This list.
         """
         # create a new ListNode
         new_node = ListNode(data)
@@ -71,11 +79,15 @@ class SinglyLinkedList:
         # this is for chaining methods
         return self
 
-    def insert_at_back_many(self, vals: list[int]) -> Self:
+    def insert_at_back_many(self, vals: list[Any]) -> Self:
         """
-        Calls insert_at_back on each item of the given list.
-            :param vals: List of values to be added to the list.
-            :returns: SinglyLinkedList - This list.
+        Calls `insert_at_back` on each item of the given list.
+
+        Args:
+            `vals` (`list[Any]`): List of values to be added to the list.
+
+        Returns:
+            `Self`: `SinglyLinkedList` - This list.
         """
         for item in vals:
             self.insert_at_back(item)
@@ -84,7 +96,9 @@ class SinglyLinkedList:
     def to_list(self) -> list[Any]:
         """
         Converts this list into a list containing the data of each node.
-            :returns: List - A list of each node's data.
+
+        Returns:
+            `list[Any]`: A list of each node's data.
         """
         lst = []
         runner = self.head
@@ -92,6 +106,38 @@ class SinglyLinkedList:
             lst.append(runner.data)
             runner = runner.next
         return lst
+
+    def insert_at_front(self, data: Any) -> Self:
+        """
+        Creates a new node with the given data and inserts that
+        node at the front of this list.
+
+        Args:
+            `data` (`Any`): The data to be added to the new node.
+
+        Returns:
+            `Self`: `SinglyLinkedList` - This list.
+        """
+        pass
+
+    def remove_head(self) -> Any:
+        """
+        Removes the first node of this list.
+
+        Returns:
+            `Any`: The data from the removed node.
+        """
+        pass
+
+    def calculate_average(self) -> float | None:
+        """
+        Calculates the average of this list. Returns None if
+        list is empty. Raise exception
+
+        Returns:
+            float|None: _description_
+        """
+        pass
 
 
 # Test case
@@ -103,3 +149,17 @@ print(my_sll.to_list())
 
 # Print the singly linked list with the __str__ method
 print(my_sll)
+
+my_sll.insert_at_front(23)
+print(my_sll)
+
+head_data = my_sll.remove_head()
+print(head_data)
+print(my_sll)
+
+easy_sll = SinglyLinkedList()
+try:
+    easy_sll.insert_at_back_many([1, "a", 3, 4])
+except TypeError:
+    print("something went wrong")
+print(easy_sll.calculate_average())
