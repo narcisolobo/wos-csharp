@@ -1,0 +1,25 @@
+@model DadJoke
+
+@{
+    var data = Model;
+    ViewData["Title"] = "Joke of the Day";
+}
+
+<div class="hero">
+    <div class="hero-content text-center">
+        <div class="max-w-md">
+            <div class="card shadow-lg bg-base-200">
+                <div class="card-body">
+                    <h1 class="text-5xl font-bold">Dad Joke of the Day</h1>
+                    <p class="py-6">
+                        @data.Joke
+                    </p>
+
+                    <form action="/eyerolls/create" method="post">
+                        <button type="submit" class="btn btn-primary">Roll your eyes at this joke</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
