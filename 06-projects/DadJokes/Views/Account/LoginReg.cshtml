@@ -1,0 +1,8 @@
+@{
+    ViewData["Title"] = "Login or Register";
+}
+
+<div class="flex items-start gap-8">
+    @await Html.PartialAsync("_RegisterForm")
+    @await Html.PartialAsync("_LoginForm")
+</div>

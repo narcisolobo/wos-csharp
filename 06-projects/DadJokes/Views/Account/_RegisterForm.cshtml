@@ -1,0 +1,33 @@
+@model RegisterModel;
+
+<div class="card bg-base-200 shadow-lg">
+    <div class="card-body">
+        <h3 class="card-title mb-4">Register</h3>
+        <form asp-action="Register" asp-controller="Account" method="post">
+            <div class="mb-2">
+                <label asp-for="RegisterEmail" class="input input-bordered flex items-center gap-2">
+                    Email:
+                    <input asp-for="RegisterEmail" placeholder="name@example.com" />
+                </label>
+                <span asp-validation-for="RegisterEmail" class="text-xs text-error"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="RegisterPassword" class="input input-bordered flex items-center gap-2">
+                    Password:
+                    <input asp-for="RegisterPassword" class="grow" placeholder="strong password" />
+                </label>
+                <span asp-validation-for="RegisterPassword" class="text-xs text-error"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="ConfirmPassword" class="input input-bordered flex items-center gap-2">
+                    Confirm:
+                    <input asp-for="ConfirmPassword" class="grow" placeholder="retype password" />
+                </label>
+                <span asp-validation-for="ConfirmPassword" class="text-xs text-error"></span>
+            </div>
+            <div class="card-actions justify-end">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
