@@ -187,21 +187,7 @@ class SinglyLinkedList:
             `Any`: The data from the node that was removed.
         """
 
-        if self.is_empty():
-            return None
-        if not self.head.next:
-            data = self.head.data
-            self.head = None
-            return data
-
-        # Traverse to the second-to-last node
-        runner = self.head
-        while runner.next.next:
-            runner = runner.next
-
-        data = runner.next.data
-        runner.next = None
-        return data
+        pass
 
     def contains(self, val):
         """
@@ -214,21 +200,7 @@ class SinglyLinkedList:
         Returns:
             `boolean`: `True` if `val` exists in list, `False` if not.
         """
-        if self.is_empty():
-            return None
-
-        if not self.head.next:
-            data = self.head.data
-            self.head = None
-            return data
-
-        runner = self.head
-        while runner.next.next:
-            runner = runner.next
-
-        data = runner.next.data
-        runner.next = None
-        return data
+        pass
 
     def contains_recursive(self, val, runner=None):
         """
