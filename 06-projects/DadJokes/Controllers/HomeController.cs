@@ -7,21 +7,13 @@ namespace DadJokes.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-    private readonly IDadJokeAPIService _jokeService;
-    private readonly string _endpoint = "https://icanhazdadjoke.com/";
 
-    public HomeController(ILogger<HomeController> logger, IDadJokeAPIService jokeService)
-    {
-        _logger = logger;
-        _jokeService = jokeService;
-    }
+    public HomeController() { }
 
     [HttpGet("")]
-    async public Task<IActionResult> Index()
+    public RedirectToActionResult Index()
     {
-        var joke = await _jokeService.GetDadJokeAsync(_endpoint);
-        return View("Index", joke);
+        return RedirectToAction("RandomJoke", "DadJoke");
     }
 
     [HttpGet("privacy")]

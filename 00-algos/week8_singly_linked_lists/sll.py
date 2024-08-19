@@ -160,7 +160,7 @@ class SinglyLinkedList:
         in the list.
 
         Returns:
-            float|None:
+            float|None: The average of the node's data.
         """
         if self.is_empty():
             return None
@@ -178,6 +178,61 @@ class SinglyLinkedList:
                 except:
                     raise NonNumericDataError(runner.data)
             return sum / count
+
+    def remove_back(self):
+        """
+        Removes the last node of this list.
+
+        Returns:
+            `Any`: The data from the node that was removed.
+        """
+
+        pass
+
+    def contains(self, val):
+        """
+        Determines whether or not the given search value
+        exists in this list.
+
+        Args:
+            val (`Any`): The data to search for in the nodes of this list.
+
+        Returns:
+            `boolean`: `True` if `val` exists in list, `False` if not.
+        """
+        pass
+
+    def contains_recursive(self, val, runner=None):
+        """
+        Recursively determines whether or not the given search value
+        exists in this list.
+
+        Args:
+            val (`Any`): The data to search for in the nodes of this list.
+            runner (`ListNode`, optional): The runner node during the traversal of this list or `None` when the end of the list has been reached.. Defaults to `None`.
+
+        Returns:
+            `boolean`: `True` if `val` exists in list, `False` if not.
+        """
+        if runner == None:
+            runner = self.head
+
+    def recursive_max(self, runner=None, max_node=None):
+        """
+        Recursively finds the maximum integer data of the nodes in this list.
+
+        Args:
+            runner: The start or current node during traversal, or `None` when the end of the list is reached.
+            max_node: Keeps track of the node that contains the current max integer as it's data.
+
+        Returns:
+            `int`: The max int or `None` if none.
+        """
+        if runner == None:
+            runner = self.head
+
+        if max_node == None:
+            max_node = self.head
 
 
 # Test case

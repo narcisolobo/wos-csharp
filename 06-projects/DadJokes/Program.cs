@@ -1,6 +1,17 @@
 using DadJokes.Services;
+using DadJokes.Areas.Identity.Data;
+using Microsoft.EntityFrameworkCore;
+using DadJokes.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+builder.Services.AddDbContext<DadJokesContext>((options) =>
+{
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
+
+builder.Services.AddDefaultIdentity<DadJokeUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<DadJokesContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
