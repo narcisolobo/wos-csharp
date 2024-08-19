@@ -187,7 +187,24 @@ class SinglyLinkedList:
             `Any`: The data from the node that was removed.
         """
 
-        pass
+        # empty list
+        if self.is_empty():
+            return None
+
+        # if there is only one node
+        if not self.head.next:
+            data = self.head.data
+            self.head = None
+            return data
+
+        # loop to second-to-last node
+        runner = self.head
+        while runner.next.next:
+            runner = runner.next
+
+        data = runner.next.data
+        runner.next = None
+        return data
 
     def contains(self, val):
         """
@@ -200,39 +217,48 @@ class SinglyLinkedList:
         Returns:
             `boolean`: `True` if `val` exists in list, `False` if not.
         """
-        pass
+        runner = self.head
+        while runner:
+            if runner.data == val:
+                return True
+            runner = runner.next
+        return False
 
     def contains_recursive(self, val, runner=None):
-        """
-        Recursively determines whether or not the given search value
-        exists in this list.
+        # Start recursion from the head if runner is not provided
+        if runner is None:
+            return self._contains_recursive(val, self.head)
 
-        Args:
-            val (`Any`): The data to search for in the nodes of this list.
-            runner (`ListNode`, optional): The runner node during the traversal of this list or `None` when the end of the list has been reached.. Defaults to `None`.
+    def _contains_recursive(self, val, runner):
+        # Base case: end of list
+        if runner is None:
+            return False
 
-        Returns:
-            `boolean`: `True` if `val` exists in list, `False` if not.
-        """
-        if runner == None:
-            runner = self.head
+        # Base case: found the value
+        if runner.data == val:
+            return True
 
-    def recursive_max(self, runner=None, max_node=None):
-        """
-        Recursively finds the maximum integer data of the nodes in this list.
+        # Recursive call: move to the next node
+        return self._contains_recursive(val, runner.next)
 
-        Args:
-            runner: The start or current node during traversal, or `None` when the end of the list is reached.
-            max_node: Keeps track of the node that contains the current max integer as it's data.
+    def recursive_max(self):
+        # Use a helper function to perform the recursion
+        def _recursive_max(runner, max_node):
+            # Base case: end of list
+            if runner is None:
+                return max_node.data if max_node else None
 
-        Returns:
-            `int`: The max int or `None` if none.
-        """
-        if runner == None:
-            runner = self.head
+            # Update max_node if runner's data is larger
+            if runner.data > max_node.data:
+                max_node = runner
 
-        if max_node == None:
-            max_node = self.head
+            # Recursive call: move to the next node
+            return _recursive_max(runner.next, max_node)
+
+        # Start the recursion from the head of the list
+        if self.head is None:
+            return None
+        return _recursive_max(self.head, self.head)
 
 
 # Test case
@@ -259,6 +285,17 @@ test_sll.insert_at_back_many([1, 2, 3, 4])
 print(test_sll.calculate_average())
 
 # calculate average with exception
-test_sll2 = SinglyLinkedList()
+""" test_sll2 = SinglyLinkedList()
 test_sll2.insert_at_back_many([1, "hello"])
-print(test_sll2.calculate_average())
+print(test_sll2.calculate_average()) """
+
+print(my_sll.remove_back())
+print(my_sll)
+
+print(my_sll.contains(10))
+print(my_sll.contains(11))
+
+print(my_sll.contains_recursive(10))
+print(my_sll.contains_recursive(11))
+
+print(my_sll.recursive_max())
