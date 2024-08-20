@@ -1,5 +1,6 @@
 using DadJokes.Areas.Identity.Data;
 using DadJokes.Models;
+using DadJokes.Services;
 using DadJokes.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,11 +10,13 @@ namespace DadJokes.Controllers;
 public class AccountController(
     DadJokesContext context,
     UserManager<DadJokeUser> userManager,
-    SignInManager<DadJokeUser> signInManager) : Controller
+    SignInManager<DadJokeUser> signInManager,
+    IImagekitAPIService imagekit) : Controller
 {
     private readonly DadJokesContext _context = context;
     private readonly UserManager<DadJokeUser> _userManager = userManager;
     private readonly SignInManager<DadJokeUser> _signInManager = signInManager;
+    private readonly IImagekitAPIService _imagekit = imagekit;
     private readonly long _maxFileSize = 2 * 1024 * 1024; // 2 MB
 
     [HttpGet("accounts")]
@@ -88,20 +91,7 @@ public class AccountController(
     [HttpGet("accounts/profile")]
     public async Task<IActionResult> Profile()
     {
-        var user = await _userManager.GetUserAsync(User);
-
-        if (user is null)
-        {
-            return RedirectToAction("LoginReg");
-        }
-
-        var profile = _context.Profiles.FirstOrDefault((p) => p.DadJokeUser == user);
-
-        var viewModel = new ProfilePageViewModel()
-        {
-            DadJokeUser = user,
-            Profile = profile,
-        };
+        var viewModel = await CreateViewModel();
 
         return View("Profile", viewModel);
     }
@@ -111,31 +101,71 @@ public class AccountController(
         if (profileImage == null || profileImage.Length == 0)
         {
             ModelState.AddModelError("ProfileImage", "Please upload a valid image.");
-            return View();
+            var viewModel = await CreateViewModel();
+            return View("Profile", viewModel);
         }
 
         if (profileImage.Length > _maxFileSize)
         {
             ModelState.AddModelError("ProfileImage", "The image file size exceeds the 2 MB limit.");
-            return View();
+            var viewModel = await CreateViewModel();
+            return View("Profile", viewModel);
         }
 
-        // Validate file type
         var permittedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
         var ext = Path.GetExtension(profileImage.FileName).ToLowerInvariant();
 
         if (string.IsNullOrEmpty(ext) || !permittedExtensions.Contains(ext))
         {
             ModelState.AddModelError("ProfileImage", "Invalid file type. Only JPG, PNG, and GIF are allowed.");
-            return View();
+            var viewModel = await CreateViewModel();
+            return View("Profile", viewModel);
         }
 
-        // Generate a safe file name
-        var safeFileName = Path.GetRandomFileName() + ext;
+        try
+        {
+            var imageUrl = await _imagekit.UploadImageAsync(profileImage);
+            var user = await GetUser();
+            var profile = GetProfile(user!)!;
+            profile.ImageUrl = imageUrl;
+            _context.SaveChanges();
+            return RedirectToAction("Profile");
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError("ProfileImage", ex.Message);
+            var viewModel = await CreateViewModel();
+            return View("Profile", viewModel);
+        }
+    }
 
-        // Upload to ImageKit.io (Placeholder - Implement your ImageKit upload logic here)
-        // Example: await UploadToImageKit(ProfileImage);
+    private async Task<ProfilePageViewModel?> CreateViewModel()
+    {
+        var user = await GetUser();
 
-        return RedirectToAction("Profile");
+        if (user is null)
+        {
+            return null;
+        }
+
+        var profile = GetProfile(user);
+
+        var viewModel = new ProfilePageViewModel()
+        {
+            DadJokeUser = user,
+            Profile = profile,
+        };
+
+        return viewModel;
+    }
+
+    private async Task<DadJokeUser?> GetUser()
+    {
+        return await _userManager.GetUserAsync(User);
+    }
+
+    private Profile? GetProfile(DadJokeUser user)
+    {
+        return _context.Profiles.FirstOrDefault((p) => p.DadJokeUser == user);
     }
 }

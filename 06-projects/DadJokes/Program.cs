@@ -17,6 +17,7 @@ builder.Services.AddDefaultIdentity<DadJokeUser>(options => options.SignIn.Requi
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IDadJokeAPIService, DadJokeAPIService>();
+builder.Services.AddTransient<IImagekitAPIService, ImagekitAPIService>();
 
 var app = builder.Build();
 
