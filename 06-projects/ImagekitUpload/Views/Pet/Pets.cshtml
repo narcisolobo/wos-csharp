@@ -1,0 +1,25 @@
+@model List<Pet>;
+
+@{
+    var pets = Model;
+    ViewData["Title"] = "All Pets";
+}
+
+<h1 class="display-4 mb-3">All Pets</h1>
+<section class="grid">
+    @foreach (var pet in pets)
+    {
+        <div class="card shadow">
+            @if (pet.PetImageUrl != null && pet.PetName != null)
+            {
+                <img class="card-img-top" src="@pet.PetImageUrl" alt="@pet.PetName">
+            }
+            <div class="card-body">
+                <h2 class="card-title">@(pet.PetName != null ? pet.PetName : "")</h2>
+                <p class="card-text">
+                    @(pet.PetImageDescription != null ? pet.PetImageDescription : "")
+                </p>
+            </div>
+        </div>
+    }
+</section>
