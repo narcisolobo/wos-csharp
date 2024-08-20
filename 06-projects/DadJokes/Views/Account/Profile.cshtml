@@ -1,0 +1,35 @@
+@model ProfilePageViewModel;
+
+@{
+    var user = Model.DadJokeUser!;
+    var profile = Model.Profile!;
+    ViewData["Title"] = "Profile";
+}
+
+<div class="card shadow-lg bg-base-200">
+    <div class="card-body">
+        <div class="avatar">
+            <div class="w-24 rounded-full">
+                @if (@profile.ImageUrl == "smoking-pipe.png")
+                {
+                    <img src="~/images/@profile.ImageUrl" alt="avatar" />
+                }
+                else
+                {
+                    <img src="@profile.ImageUrl" alt="avatar" />
+                }
+            </div>
+        </div>
+        <p>@user.Email</p>
+        <form asp-controller="Account" asp-action="UploadImage" enctype="multipart/form-data" method="post">
+            <div class="mb-4">
+                <label for="profileImage" class="block mb-2">Upload new image:</label>
+                <input type="file" class="file-input file-input-bordered w-full max-w-xs" id="profileImage"
+                    name="ProfileImage" accept="image/*" />
+            </div>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </div>
+        </form>
+    </div>
+</div>

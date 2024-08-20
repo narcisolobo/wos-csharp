@@ -1,0 +1,26 @@
+@model LoginModel;
+
+<div class="card bg-base-200 shadow-lg">
+    <div class="card-body">
+        <h3 class="card-title mb-4">Login</h3>
+        <form asp-action="Login" asp-controller="Account" method="post">
+            <div class="mb-2">
+                <label asp-for="LoginEmail" class="input input-bordered flex items-center gap-2">
+                    Email
+                    <input asp-for="LoginEmail" placeholder="name@example.com" />
+                </label>
+                <span asp-validation-for="LoginEmail"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="LoginPassword" class="input input-bordered flex items-center gap-2">
+                    Password
+                    <input asp-for="LoginPassword" class="grow" placeholder="strong password" />
+                </label>
+                <span asp-validation-for="LoginPassword"></span>
+            </div>
+            <div class="card-actions justify-end">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

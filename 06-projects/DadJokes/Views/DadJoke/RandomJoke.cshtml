@@ -1,7 +1,8 @@
-@model DadJoke
+@model RandomJokePageViewModel
 
 @{
-    var data = Model;
+    var dadJoke = Model.DadJoke;
+    var user = Model.DadJokeUser;
     ViewData["Title"] = "Joke of the Day";
 }
 
@@ -11,9 +12,12 @@
             <div class="card shadow-lg bg-base-200">
                 <div class="card-body">
                     <h1 class="text-5xl font-bold">Dad Joke of the Day</h1>
-                    <p class="py-6">
-                        @data.Joke
-                    </p>
+                    @if (dadJoke is not null)
+                    {
+                        <p class="py-6">
+                            @dadJoke.Joke
+                        </p>
+                    }
 
                     <form action="/eyerolls/create" method="post">
                         <button type="submit" class="btn btn-primary">Roll your eyes at this joke</button>

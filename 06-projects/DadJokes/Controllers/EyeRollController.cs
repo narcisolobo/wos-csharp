@@ -18,7 +18,7 @@ public class EyeRollController(DadJokesContext context) : Controller
         {
             if (!user.Identity.IsAuthenticated)
             {
-                return RedirectToAction("LoginUser", "Account");
+                return RedirectToAction("LoginReg", "Account");
             }
         }
 
