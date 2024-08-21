@@ -260,42 +260,42 @@ class SinglyLinkedList:
             return None
         return _recursive_max(self.head, self.head)
 
+    def second_to_last(self):
+        """
+        Retrieves the data of the second to last node in this list.
+
+        Returns:
+            `Any`: The data of the second to last node or null if there is no second to last node.
+        """
+        pass
+
+    def remove_val(self, val):
+        """
+        Removes the node that has the matching given val as it's data.
+
+        Args:
+            `val` (`Any`): The value to compare to the node's data to find the node to be removed.
+
+        Returns:
+            `bool`: Indicates if a node was removed or not.
+        """
+        pass
+
+    # EXTRA
+    def prepend(self, new_val, target_val):
+        """
+        Inserts a new node before a node that has the given value as its data.
+
+        Args:
+            `new_val` (`Any`): The value to use for the new node that is being added.
+            `target_val` (`Any`): The value to use to find the node that the new_val should be inserted in front of.
+
+        Returns:
+            `bool`: To indicate whether the node was pre-pended or not.
+        """
+        pass
+
 
 # Test case
 my_sll = SinglyLinkedList()
 my_sll.insert_at_back_many([5, 10, 4, 3, 6, 1, 7, 2])
-
-# Convert the singly linked list to a list and print it
-print(my_sll.to_list())
-
-# Print the singly linked list with the __str__ method
-print(my_sll)
-
-print("insert_at_front")
-my_sll.insert_at_front(23)
-print(my_sll)
-
-print("remove_head")
-print(my_sll.remove_head())
-print(my_sll)
-
-# calculate average
-test_sll = SinglyLinkedList()
-test_sll.insert_at_back_many([1, 2, 3, 4])
-print(test_sll.calculate_average())
-
-# calculate average with exception
-""" test_sll2 = SinglyLinkedList()
-test_sll2.insert_at_back_many([1, "hello"])
-print(test_sll2.calculate_average()) """
-
-print(my_sll.remove_back())
-print(my_sll)
-
-print(my_sll.contains(10))
-print(my_sll.contains(11))
-
-print(my_sll.contains_recursive(10))
-print(my_sll.contains_recursive(11))
-
-print(my_sll.recursive_max())
