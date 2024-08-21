@@ -1,0 +1,39 @@
+@model UkuleleForm;
+
+@{
+    ViewData["Title"] = "Upload to Static";
+}
+
+<section>
+    <h1 class="display-4 mb-3">Upload to Static</h1>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <form asp-action="StaticUpload" asp-controller="Ukulele" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Brand"></label>
+                    <input class="form-control" asp-for="Brand">
+                    <span class="form-text text-warning" asp-validation-for="Brand"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Model"></label>
+                    <input class="form-control" asp-for="Model">
+                    <span class="form-text text-warning" asp-validation-for="Model"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Image"></label>
+                    <input class="form-control" asp-for="Image">
+                    <span class="form-text text-warning" asp-validation-for="Image"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="Description"></label>
+                    <textarea class="form-control textarea" asp-for="Description"></textarea>
+                    <span class="form-text text-warning" asp-validation-for="Description"></span>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Upload to Static</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

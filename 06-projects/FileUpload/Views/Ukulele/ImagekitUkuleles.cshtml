@@ -1,0 +1,25 @@
+@model List<Ukulele>;
+
+@{
+    var ukuleles = Model;
+    ViewData["Title"] = "All Ukuleles";
+}
+
+<h1 class="display-4 mb-3">All Imagekit Ukuleles</h1>
+<section class="grid">
+    @foreach (var ukulele in ukuleles)
+    {
+        <div class="card shadow">
+            @if (ukulele.ImageUrl != null && ukulele.Model != null)
+            {
+                <img class="card-img-top" src="@ukulele.ImageUrl" alt="@ukulele.Model">
+            }
+            <div class="card-body">
+                <h2 class="card-title">@(ukulele.Brand != null ? ($"{ukulele.Brand} {ukulele.Model}") : "")</h2>
+                <p class="card-text">
+                    @(ukulele.Description != null ? ukulele.Description : "")
+                </p>
+            </div>
+        </div>
+    }
+</section>

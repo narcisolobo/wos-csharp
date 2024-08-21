@@ -267,7 +267,14 @@ class SinglyLinkedList:
         Returns:
             `Any`: The data of the second to last node or `None` if there is no second to last node.
         """
-        pass
+        if self.is_empty() or self.head.next is None:
+            return None
+
+        runner = self.head
+        while runner.next.next:
+            runner = runner.next
+
+        return runner.data
 
     def remove_val(self, val):
         """
@@ -279,7 +286,22 @@ class SinglyLinkedList:
         Returns:
             `bool`: Indicates if a node was removed or not.
         """
-        pass
+        if self.is_empty():
+            return False
+
+        # If the head needs to be removed
+        if self.head.data == val:
+            self.head = self.head.next
+            return True
+
+        runner = self.head
+        while runner.next:
+            if runner.next.data == val:
+                runner.next = runner.next.next
+                return True
+            runner = runner.next
+
+        return False
 
     # EXTRA
     def prepend(self, new_val, target_val):
@@ -293,15 +315,43 @@ class SinglyLinkedList:
         Returns:
             `bool`: To indicate whether the node was pre-pended or not.
         """
-        pass
+        if self.is_empty():
+            return False
+
+        new_node = ListNode(new_val)
+
+        # If we need to prepend before the head
+        if self.head.data == target_val:
+            new_node.next = self.head
+            self.head = new_node
+            return True
+
+        runner = self.head
+        while runner.next:
+            if runner.next.data == target_val:
+                new_node.next = runner.next
+                runner.next = new_node
+                return True
+            runner = runner.next
+
+        return False
 
 
 # Test case
 my_sll = SinglyLinkedList()
 my_sll.insert_at_back_many([5, 10, 4, 3, 6, 1, 7, 2])
 
+print("before:")
 print(my_sll)
 # head: 5 -> 10 -> 4 -> 3 -> 6 -> 1 -> 7 -> 2 -> None
 
+print(f"second to last: {my_sll.second_to_last()}")
+
+my_sll.remove_val(4)
+print("after removing 4:")
+print(my_sll)
+
 my_sll.prepend(12, 6)
+print("after prepending 12 before 6:")
+print(my_sll)
 # head: 5 -> 10 -> 4 -> 3 -> 12 -> 6 -> 1 -> 7 -> 2 -> None
