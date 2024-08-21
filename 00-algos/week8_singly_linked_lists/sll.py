@@ -265,13 +265,13 @@ class SinglyLinkedList:
         Retrieves the data of the second to last node in this list.
 
         Returns:
-            `Any`: The data of the second to last node or null if there is no second to last node.
+            `Any`: The data of the second to last node or `None` if there is no second to last node.
         """
         pass
 
     def remove_val(self, val):
         """
-        Removes the node that has the matching given val as it's data.
+        Removes the first node that has the matching given val as it's data.
 
         Args:
             `val` (`Any`): The value to compare to the node's data to find the node to be removed.
@@ -284,7 +284,7 @@ class SinglyLinkedList:
     # EXTRA
     def prepend(self, new_val, target_val):
         """
-        Inserts a new node before a node that has the given value as its data.
+        Inserts a new node before a node that has the given `target_val` as its data.
 
         Args:
             `new_val` (`Any`): The value to use for the new node that is being added.
@@ -299,3 +299,9 @@ class SinglyLinkedList:
 # Test case
 my_sll = SinglyLinkedList()
 my_sll.insert_at_back_many([5, 10, 4, 3, 6, 1, 7, 2])
+
+print(my_sll)
+# head: 5 -> 10 -> 4 -> 3 -> 6 -> 1 -> 7 -> 2 -> None
+
+my_sll.prepend(12, 6)
+# head: 5 -> 10 -> 4 -> 3 -> 12 -> 6 -> 1 -> 7 -> 2 -> None
