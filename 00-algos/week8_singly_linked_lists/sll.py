@@ -1,4 +1,4 @@
-from typing import Any, Self
+from typing import Any, Self, Type
 
 
 class NonNumericDataError(Exception):
@@ -346,7 +346,16 @@ class SinglyLinkedList:
         Returns:
             `SinglyLinkedList`: This list with the added nodes.
         """
-        # your code here
+
+        if self.is_empty():
+            self.head = add_list.head
+        else:
+            runner = self.head
+            while runner.next is not None:
+                runner = runner.next
+            runner.next = add_list.head
+
+        return self
 
     def move_min_to_front(self):
         """
@@ -355,7 +364,29 @@ class SinglyLinkedList:
         Returns:
             `SinglyLinkedList`: This list with the smallest node moved to the front.
         """
-        # your code here
+
+        if self.head is None or self.head.next is None:
+            return self
+
+        min_node = self.head
+        min_prev = None
+        runner = self.head
+        prev = None
+
+        while runner:
+            if runner.data < min_node.data:
+                min_node = runner
+                min_prev = prev
+            prev = runner
+            runner = runner.next
+
+        if min_node != self.head:
+            if min_prev is not None:
+                min_prev.next = min_node.next
+            min_node.next = self.head
+            self.head = min_node
+
+        return self
 
     def split_on_val(self, val):
         """
@@ -365,38 +396,45 @@ class SinglyLinkedList:
             `val`: The value in the node that the list should be split on.
 
         Returns:
-            `SinglyLinkedList`: The new list containing the nodes that are no longer in this list.
+            `SinglyLinkedList`|`None`: The new list containing the nodes that are no longer in this list, or `None` if val is not found.
         """
-        # your code here
+
+        if self.head is None:
+            return None
+
+        runner = self.head
+        prev = None
+
+        while runner:
+            if runner.data == val:
+                if prev is not None:
+                    prev.next = None
+
+                new_list = SinglyLinkedList()
+                new_list.head = runner
+                return new_list
+
+            prev = runner
+            runner = runner.next
+
+        return None
 
 
 # Test case
 my_sll = SinglyLinkedList()
 my_sll.insert_at_back_many([5, 10, 4, 3, 6, 1, 7, 2])
 
-print("before:")
-print(my_sll)
-# head: 5 -> 10 -> 4 -> 3 -> 6 -> 1 -> 7 -> 2 -> None
-
-print(f"second to last: {my_sll.second_to_last()}")
-
-my_sll.remove_val(4)
-print("after removing 4:")
-print(my_sll)
-
-my_sll.prepend(12, 6)
-print("after prepending 12 before 6:")
-print(my_sll)
-# head: 5 -> 10 -> 4 -> 3 -> 12 -> 6 -> 1 -> 7 -> 2 -> None
-
 second_list = SinglyLinkedList()
 second_list.insert_at_back_many([32, 19, 88, 14])
 
-my_sll.concat(second_list)
+print("concat:")
+print(my_sll.concat(second_list))
 # head: 5 -> 10 -> 4 -> 3 -> 12 -> 6 -> 1 -> 7 -> 2 -> 32 -> 19 -> 88 -> 14 -> None
 
-my_sll.move_min_to_front()
+print("move_min_to_front")
+print(my_sll.move_min_to_front())
 # head: 1 -> 5 -> 10 -> 4 -> 3 -> 12 -> 6 -> 7 -> 2 -> 32 -> 19 -> 88 -> 14 -> None
 
-my_sll.split_on_val(7)
+print("split_on_val")
+print(my_sll.split_on_val(7))
 # head: 7 -> 2 -> 32 -> 19 -> 88 -> 14 -> None
