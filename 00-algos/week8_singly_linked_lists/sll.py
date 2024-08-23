@@ -64,7 +64,7 @@ class SinglyLinkedList:
             `data` (`Any`): The data to be added to the new node.
 
         Returns:
-            `Self`: `SinglyLinkedList` - This list.
+            `SinglyLinkedList`: This list.
         """
         # create a new ListNode
         new_node = ListNode(data)
@@ -96,7 +96,7 @@ class SinglyLinkedList:
             `vals` (`list[Any]`): List of values to be added to the list.
 
         Returns:
-            `Self`: `SinglyLinkedList` - This list.
+            `SinglyLinkedList`: This list.
         """
         for item in vals:
             self.insert_at_back(item)
@@ -125,7 +125,7 @@ class SinglyLinkedList:
             `data` (`Any`): The data to be added to the new node.
 
         Returns:
-            `Self`: `SinglyLinkedList` - This list.
+            `SinglyLinkedList`: This list.
         """
         new_node = ListNode(data)
         if self.is_empty():
@@ -336,6 +336,39 @@ class SinglyLinkedList:
 
         return False
 
+    def concat(self, add_list):
+        """
+        Concatenates the nodes of a given list onto the back of this list.
+
+        Args:
+            `add_list`: An instance of a different list whose nodes will be added to the back of this list.
+
+        Returns:
+            `SinglyLinkedList`: This list with the added nodes.
+        """
+        # your code here
+
+    def move_min_to_front(self):
+        """
+        Finds the node with the smallest data and moves that node to the front of this list.
+
+        Returns:
+            `SinglyLinkedList`: This list with the smallest node moved to the front.
+        """
+        # your code here
+
+    def split_on_val(self, val):
+        """
+        Splits this list into two lists where the second list starts with the node that has the given value.
+
+        Args:
+            `val`: The value in the node that the list should be split on.
+
+        Returns:
+            `SinglyLinkedList`: The new list containing the nodes that are no longer in this list.
+        """
+        # your code here
+
 
 # Test case
 my_sll = SinglyLinkedList()
@@ -355,3 +388,15 @@ my_sll.prepend(12, 6)
 print("after prepending 12 before 6:")
 print(my_sll)
 # head: 5 -> 10 -> 4 -> 3 -> 12 -> 6 -> 1 -> 7 -> 2 -> None
+
+second_list = SinglyLinkedList()
+second_list.insert_at_back_many([32, 19, 88, 14])
+
+my_sll.concat(second_list)
+# head: 5 -> 10 -> 4 -> 3 -> 12 -> 6 -> 1 -> 7 -> 2 -> 32 -> 19 -> 88 -> 14 -> None
+
+my_sll.move_min_to_front()
+# head: 1 -> 5 -> 10 -> 4 -> 3 -> 12 -> 6 -> 7 -> 2 -> 32 -> 19 -> 88 -> 14 -> None
+
+my_sll.split_on_val(7)
+# head: 7 -> 2 -> 32 -> 19 -> 88 -> 14 -> None
